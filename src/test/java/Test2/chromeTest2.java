@@ -13,7 +13,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class chromeTest2 {
 
-	@Test
 	public void testChrome1()
     {
 		System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\ChromeDriver\\chromedriver.exe");  
@@ -27,7 +26,6 @@ public class chromeTest2 {
         driver.quit();
 	}
 
-	@Test
 	public void testChrome2()
     {
 		System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\ChromeDriver\\chromedriver.exe");  
@@ -69,7 +67,6 @@ public class chromeTest2 {
         driver.quit();
     }
 	
-	@Test
 	public void testChrome4()
     {
 		WebDriverManager.chromedriver().setup();
