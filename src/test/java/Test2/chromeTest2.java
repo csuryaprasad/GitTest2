@@ -41,7 +41,7 @@ public class chromeTest2 {
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.MILLISECONDS);
         
         WebElement mailID = driver.findElement(By.id("email"));
-        mailID.sendKeys("test1@gmail.com");
+        mailID.sendKeys("testingDemo@gmail.com");
         
         driver.quit();
 	}
