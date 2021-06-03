@@ -33,10 +33,3 @@ jobs:
       
     - name: Run Tests
       run: ./gradlew test --info # Run our tests using Gradle
-
-    - name: 'Publish Test Report'
-      if: always()
-      uses: actions/upload-artifact@v2-preview
-      with:
-         name: 'test-report'
-         path: build/reports/tests/test/*
