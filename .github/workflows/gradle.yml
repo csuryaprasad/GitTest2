@@ -9,7 +9,7 @@ on:
       testSuite:
         description: 'Test Suite'
         required: true
-        default: 'master'
+        default: 'RegressionSuite'
       gitRepo:
         description: 'GIT REPO'
       testClass:
