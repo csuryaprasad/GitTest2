@@ -4,12 +4,17 @@
 name: Java CI with Gradle Test2
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  schedule:
-    - cron:  '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      testSuite:
+        description: 'Test Suite'
+        required: true
+        default: 'master'
+      gitRepo:
+        description: 'GIT REPO'
+      testClass:
+        description: 'TEST CLASS'
+     
 
 jobs:
   build:
@@ -32,4 +37,7 @@ jobs:
       run: chmod +x gradlew
       
     - name: Run Tests
-      run: ./gradlew test --info # Run our tests using Gradle
+      run:
+        echo "Log level:${{github.event.inputs.testSuite}}"
+        echo "Tags:${{github.event.inputs.gitRepo}}"
+        ./gradlew test --info # Run our tests using Gradle
