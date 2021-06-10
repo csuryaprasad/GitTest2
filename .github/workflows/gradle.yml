@@ -10,8 +10,6 @@ on:
         description: 'Test Suite'
         required: true
         default: 'RegressionSuite'
-      gitRepo:
-        description: 'GIT REPO'
       testClass:
         description: 'TEST CLASS'
      
@@ -39,5 +37,4 @@ jobs:
     - name: Run Tests
       run:
         echo "Log level:${{github.event.inputs.testSuite}}"
-        echo "Tags:${{github.event.inputs.gitRepo}}"
         ./gradlew test --info # Run our tests using Gradle
