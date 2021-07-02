@@ -8,8 +8,6 @@ on:
       - master # or the name of your main branch
   pull_request:
     types: [opened, synchronize, reopened]
-  
-       
 jobs:
   build:
     name: Build
@@ -26,7 +24,7 @@ jobs:
         run: 
             chmod +x ./scripts/InstallChrome.sh
           ./scripts/InstallChrome.sh
-  
+     
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       
