@@ -8,6 +8,8 @@ on:
       - master # or the name of your main branch
   pull_request:
     types: [opened, synchronize, reopened]
+  
+       
 jobs:
   build:
     name: Build
@@ -24,10 +26,28 @@ jobs:
         run: 
             chmod +x ./scripts/InstallChrome.sh
           ./scripts/InstallChrome.sh
-     
+  
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       
-      - name: Run Tests
-        run: ./gradlew test --info # Run our tests using Gradle
+      - name: Cache SonarQube packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Gradle packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GI_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_KEY }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - 
+        name: Run Tests
+        run: ./gradlew build sonarqube --info 
  
