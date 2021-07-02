@@ -39,6 +39,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Build and analyze
+        run: echo "Heelo World"
         env:
           GITHUB_TOKEN: ${{ secrets.GI_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_KEY }}
