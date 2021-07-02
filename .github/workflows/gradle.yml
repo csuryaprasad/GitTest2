@@ -43,12 +43,10 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Build and analyze
-      - uses: SonarSource/sonarcloud-github-action@v1.6
         env:
           GITHUB_TOKEN: ${{ secrets.GI_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_KEY }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      - 
-        name: Run Tests
+      - name: Run Tests
         run: ./gradlew build sonarqube --info 
  
