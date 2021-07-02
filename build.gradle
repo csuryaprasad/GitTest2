@@ -8,6 +8,7 @@
 
 plugins {
  		id "org.sonarqube" version "3.0"
+ 		id 'jacoco'
        	id 'java-library'
 }
 
@@ -45,13 +46,16 @@ dependencies {
     	useTestNG() { //Tells Gradle to use TestNG
     	}
     }
-    
+    jacocoTestReport {
+  	reports {
+    xml.enabled true
+  		}
+	}
       sonarqube {
       properties {
-        property "sonar.projectName", "GitTest2"
-        property "sonar.projectKey", "csuryaprasad_GitTest2"
-        property "sonar.exclusions", "src/**/*.properties"
-        property "sonar.host.url", "https://sonarcloud.io/organizations/csuryaprasad"
+      	systemProp.sonar.host.url='https://sonarcloud.io'
+		systemProp.sonar.organization='csuryaprasad'
+		systemProp.sonar.projectKey='csuryaprasad_GitTest2'
       }
      }
 }
